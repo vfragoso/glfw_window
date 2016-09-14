@@ -34,8 +34,18 @@
 
 #include <iostream>
 #include <string>
+
+// The macro below tells the linker to use the GLEW library in a static way.
+// This is mainly for compatibility with Windows.
+// Glew is a library that "scans" and knows what "extensions" (i.e.,
+// non-standard algorithms) are available in the OpenGL implementation in the
+// system. This library is crucial in determining if some features that our
+// OpenGL implementation uses are not available.
 #define GLEW_STATIC
 #include <GL/glew.h>
+// The header of GLFW. This library is a C-based and light-weight library for
+// creating windows for OpenGL rendering.
+// See http://www.glfw.org/ for more information.
 #include <GLFW/glfw3.h>
 
 // Annonymous namespace for constants and helper functions.
@@ -44,7 +54,7 @@ namespace {
 constexpr int kWindowWidth = 640;
 constexpr int kWindowHeight = 480;
 
-// Error callback.
+// Error callback function.
 static void ErrorCallback(int error, const char* description) {
   std::cerr << "ERROR: " << description << std::endl;
 }
@@ -76,7 +86,7 @@ void SetWindowHints() {
 }  // namespace
 
 int main(int argc, char** argv) {
-    // Initialize the GLFW library.
+  // Initialize the GLFW library.
   if (!glfwInit()) {
     return -1;
   }
