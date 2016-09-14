@@ -69,12 +69,14 @@ ADD_SUBDIRECTORY(libraries)
 
 # Include directories.
 INCLUDE_DIRECTORIES(
-  ${GFLAGS_INCLUDE_DIRS}
-  ${GLOG_INCLUDE_DIRS}
   ${OPENGL_INCLUDE_DIR}
   ${GLEW_INCLUDE_DIRS}
   libraries/glfw-3.1.2/include)
 
 # Binary that creates a simple window using glfw.
 ADD_EXECUTABLE(create_glfw_window create_glfw_window.cc)
-TARGET_LINK_LIBRARIES(create_glfw_window glfw ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} ${GLFW_LIBRARIES})
+TARGET_LINK_LIBRARIES(create_glfw_window
+  glfw
+  ${OPENGL_LIBRARIES}
+  ${GLEW_LIBRARIES}
+  ${GLFW_LIBRARIES})
